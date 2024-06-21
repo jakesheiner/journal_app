@@ -3,31 +3,27 @@ import SwiftUI
 
 
 struct QuiltView: View {
-    @StateObject private var journalEntryList = JournalEntryList.shared
+    @ObservedObject private var journalEntryList = JournalEntryList.shared
     
     
     @State private var selectedSquare: JournalEntry? = nil
     
     var body: some View {
         ZStack {
-            Image("fabric")
-                .resizable()
-               // .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            LinearGradient(gradient: Gradient(colors: [.white, .gray]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-                .blendMode(.multiply)
+           
             GeometryReader { geometry in
                 
                 let screenWidth = geometry.size.width
-                let itemSize = screenWidth / 3
+                let itemSize = (screenWidth-40) / 3
                 
                 ZStack(alignment: .top) {
                     ScrollView{
-                    LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: 0), count: 3), spacing: 0) {
+                    LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: 10), count: 3), spacing: 10) {
                         ForEach(journalEntryList.myArray) { square in
-                            square.color
-                                .blendMode(.multiply)
+                            square.color.color
+                                .cornerRadius(10)
+                                //.blendMode(.multiply)
+                                .shadow(color:Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 0.2),radius: 10)
                                 .frame(width: itemSize, height: itemSize)
                                 .onTapGesture {
                                     selectedSquare = square
@@ -53,7 +49,7 @@ struct QuiltView: View {
                             }
                         
                         VStack {
-                            square.color
+                            square.color.color
                                 .frame(width: 200, height: 200)
                                 .cornerRadius(10)
                             Text(square.text)
@@ -69,8 +65,9 @@ struct QuiltView: View {
                     }
                 }
             }
-            .edgesIgnoringSafeArea(.top) // Ensures the grid takes up the full screen
+            //.edgesIgnoringSafeArea(.top) // Ensures the grid takes up the full screen
         //.background(Color(hex:"ede8e8"))
+            
         }
     }
     

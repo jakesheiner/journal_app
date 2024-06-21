@@ -6,18 +6,20 @@ struct JournalView: View {
    
     var body: some View {
         ZStack {
-            Image("leather")
-                .resizable()
+            //Image("leather")
+              //  .resizable()
                // .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
+             //   .edgesIgnoringSafeArea(.all)
             
             VStack {
                 HStack {
                     Text("My Journal")
-                        .font(.headline)
-                    Spacer()
+                        .font(.custom("PlayfairDisplayRoman-ExtraBold", size: 17, relativeTo: .body))
+                        .foregroundColor(.white)
+                    //Spacer()
                 }
-                .padding(.leading, 48)
+               // .padding(.leading, 48)
+                .padding(.top)
                 
                 TabView(selection: $selectedTab) {
                     if journalEntryList.myArray.isEmpty {
@@ -33,16 +35,17 @@ struct JournalView: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .automatic))
                 //.cornerRadius(30)
-                .padding()
+                .padding(.bottom)
                 .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
                 
-                if journalEntryList.myArray.count > 1 {
-                    Text("give it a swipe!")
-                        .font(.caption2)
-                        .foregroundColor(.gray)
-                        .padding(.bottom, 32)
-                }
+           //     if journalEntryList.myArray.count > 1 {
+              //      Text("give it a swipe!")
+             //           .font(.caption2)
+             //           .foregroundColor(.gray)
+              //          .padding(.bottom, 32)
+              //  }
             }
+           
         }
         //.background(Color(hex:"ede8e8"))
     }

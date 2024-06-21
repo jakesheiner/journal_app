@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class OpenAIViewModel: ObservableObject {
-    @StateObject private var journalEntryList = JournalEntryList.shared
+    @ObservedObject private var journalEntryList = JournalEntryList.shared
     @Published var userInput: String = ""
     @Published var responseText: String = ""
     private var cancellables = Set<AnyCancellable>()
@@ -34,7 +34,7 @@ class OpenAIViewModel: ObservableObject {
         //API parameters
         let parameters: [String: Any] = [
             "model": "gpt-4-turbo",
-            "messages": [["role": "user", "content": "return a color basd on the mood of the following text.The color should be as nuanced as possible, it should be very rare taht two inputs yield the same color. The color should be as iconic as possible, people should be able to get a sense of the mood just by seeing the color, even without the text. Also return a name for the chosen color. Also return a very brief explanation of why the color was chosen. The response must be decodable by a JSON decoder with parameters color, name, and explanation.input text:\(userInput)"]],
+            "messages": [["role": "user", "content": "return a color basd on the mood of the following text.The color should be as nuanced as possible, it should be very rare taht two inputs yield the same color. The color should be as iconic as possible, people should be able to get a sense of the mood just by seeing the color, even without the text. Also return a name for the chosen color. Also return a very brief explanation of why the color was chosen. The explanation should be about one sentence, and should avoid quoting the user input directly, in favor of describing emotions and moods. The response must be decodable by a JSON decoder with parameters color, name, and explanation.input text:\(userInput)"]],
             "temperature": 1,
             "response_format": [
                 "type": "json_object"
@@ -111,7 +111,7 @@ class OpenAIViewModel: ObservableObject {
     func uploadResponse(){
         if let responseData = responseText.data(using: .utf8) {
             if let moodResponse = decodeMoodResponse(from: responseData) {
-                let entry = JournalEntry(text:userInput,color: Color(hex: moodResponse.color),date: Date(),name:moodResponse.name)
+                let entry = JournalEntry(text:userInput,color: Color(hex: moodResponse.color),date: Date(),name:moodResponse.name,expl:moodResponse.explanation)
                 journalEntryList.addObject(entry)
             }
         }

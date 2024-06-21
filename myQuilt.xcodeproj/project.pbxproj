@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E20071D02C1E3CCB009DF9B6 /* PlayfairDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E20071CF2C1E3C18009DF9B6 /* PlayfairDisplay.ttf */; };
+		E21027E12C1F80F20076F88A /* bottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21027E02C1F80F20076F88A /* bottomSheet.swift */; };
+		E21027E32C1F85F30076F88A /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21027E22C1F85F30076F88A /* CustomTabView.swift */; };
 		E261F7A22C1E0370004847E7 /* key.swift in Sources */ = {isa = PBXBuildFile; fileRef = E261F7A12C1E0370004847E7 /* key.swift */; };
 		E2D642382C14D18A001F6AF9 /* myQuiltApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D642372C14D18A001F6AF9 /* myQuiltApp.swift */; };
 		E2D6423A2C14D18A001F6AF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D642392C14D18A001F6AF9 /* ContentView.swift */; };
@@ -43,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E20071CF2C1E3C18009DF9B6 /* PlayfairDisplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlayfairDisplay.ttf; sourceTree = "<group>"; };
+		E20071D12C1E3D06009DF9B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E21027E02C1F80F20076F88A /* bottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bottomSheet.swift; sourceTree = "<group>"; };
+		E21027E22C1F85F30076F88A /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		E261F7A12C1E0370004847E7 /* key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = key.swift; sourceTree = "<group>"; };
 		E2D642342C14D18A001F6AF9 /* myQuilt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myQuilt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D642372C14D18A001F6AF9 /* myQuiltApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myQuiltApp.swift; sourceTree = "<group>"; };
@@ -89,9 +96,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E20071CE2C1E3C11009DF9B6 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E20071CF2C1E3C18009DF9B6 /* PlayfairDisplay.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		E2D6422B2C14D18A001F6AF9 = {
 			isa = PBXGroup;
 			children = (
+				E21027E22C1F85F30076F88A /* CustomTabView.swift */,
+				E21027E02C1F80F20076F88A /* bottomSheet.swift */,
+				E20071CE2C1E3C11009DF9B6 /* fonts */,
 				E2D642362C14D18A001F6AF9 /* myQuilt */,
 				E2D642492C14D18C001F6AF9 /* journal_appTests */,
 				E2D642532C14D18C001F6AF9 /* journal_appUITests */,
@@ -112,6 +130,7 @@
 		E2D642362C14D18A001F6AF9 /* myQuilt */ = {
 			isa = PBXGroup;
 			children = (
+				E20071D12C1E3D06009DF9B6 /* Info.plist */,
 				E2D642372C14D18A001F6AF9 /* myQuiltApp.swift */,
 				E2D642392C14D18A001F6AF9 /* ContentView.swift */,
 				E2D6423B2C14D18A001F6AF9 /* Item.swift */,
@@ -267,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2D642412C14D18B001F6AF9 /* Preview Assets.xcassets in Resources */,
+				E20071D02C1E3CCB009DF9B6 /* PlayfairDisplay.ttf in Resources */,
 				E2D6423E2C14D18B001F6AF9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,11 +317,13 @@
 				E2D643572C1A9922001F6AF9 /* ColorExt.swift in Sources */,
 				E2D6426E2C1898BE001F6AF9 /* entriesList.swift in Sources */,
 				E2D6423A2C14D18A001F6AF9 /* ContentView.swift in Sources */,
+				E21027E32C1F85F30076F88A /* CustomTabView.swift in Sources */,
 				E2D6423C2C14D18A001F6AF9 /* Item.swift in Sources */,
 				E2D643552C18CD91001F6AF9 /* TextEntryView.swift in Sources */,
 				E2D642382C14D18A001F6AF9 /* myQuiltApp.swift in Sources */,
 				E2D643602C1CFC65001F6AF9 /* JournalPageView.swift in Sources */,
 				E2D643592C1A9A08001F6AF9 /* OpenAIViewModel.swift in Sources */,
+				E21027E12C1F80F20076F88A /* bottomSheet.swift in Sources */,
 				E2D642682C17BF9E001F6AF9 /* JournalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,8 +488,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"myQuilt/Preview Content\"";
+				DEVELOPMENT_TEAM = D42P5922GS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = myQuilt/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -494,8 +519,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"myQuilt/Preview Content\"";
+				DEVELOPMENT_TEAM = D42P5922GS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = myQuilt/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
