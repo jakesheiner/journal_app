@@ -8,63 +8,87 @@ struct QuiltView: View {
     
     @State private var selectedSquare: JournalEntry? = nil
     
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+       // formatter.timeStyle = .short
+        return formatter
+    }
+    
+    private var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+       // formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }
+    
     var body: some View {
         ZStack {
-           
+            
             GeometryReader { geometry in
                 
                 let screenWidth = geometry.size.width
-                let itemSize = (screenWidth-40) / 3
+                let itemSize = (screenWidth-12) / 3
                 
                 ZStack(alignment: .top) {
+                    
                     ScrollView{
-                    LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: 10), count: 3), spacing: 10) {
+                        
+                    LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: 3), count: 3), spacing: 3) {
                         ForEach(journalEntryList.myArray) { square in
-                            square.color.color
-                                .cornerRadius(10)
-                                //.blendMode(.multiply)
-                                .shadow(color:Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 0.2),radius: 10)
-                                .frame(width: itemSize, height: itemSize)
-                                .onTapGesture {
-                                    selectedSquare = square
-                                }
-                                .contextMenu {
-                                    Button(action: {
-                                        journalEntryList.removeObject(withID: square.id)
-                                    }) {
-                                        Text("Remove")
-                                        Image(systemName: "trash")
+                            ZStack {
+                                square.color.color
+                                    .cornerRadius(2)
+                                VStack {
+                                    HStack {
+                                        
+                                        Text("\(square.date, formatter: dateFormatter)")
+                                            .font(.caption)
+                                            .fontWeight(.heavy)
+                                       
+                                            .foregroundColor(square.color.color.isDark() ? .white : .black)
+                                    
+                                        Spacer()
                                     }
+                                    HStack {
+                                        Text(square.date, formatter: timeFormatter)
+                                            .font(.caption2)
+                                            .foregroundColor(square.color.color.isDark() ? .white : .black)
+                                        Spacer()
+                                    }
+                                        Spacer()
+                                    
+                                    
+                                    Spacer()
+                                       
                                 }
+                                .padding()
+                            }
+                                 
+                                    //.blendMode(.multiply)
+                                  //  .shadow(color:Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 0.2),radius: 10)
+                                    .frame(width: itemSize, height: itemSize)
+                                    .onTapGesture {
+                                        selectedSquare = square
+                                    }
+                                    .contextMenu {
+                                        Button(action: {
+                                            journalEntryList.removeObject(withID: square.id)
+                                        }) {
+                                            Text("Remove")
+                                            Image(systemName: "trash")
+                                        }
+                                }
+                            
                         }
                     }
                 }
                     .frame(width: screenWidth)
-                    
-                    if let square = selectedSquare {
-                        Color.black.opacity(0.4)
-                            .edgesIgnoringSafeArea(.all)
-                            .onTapGesture {
-                                selectedSquare = nil
-                            }
-                        
-                        VStack {
-                            square.color.color
-                                .frame(width: 200, height: 200)
-                                .cornerRadius(10)
-                            Text(square.text)
-                                .font(.headline)
-                                .padding()
-                        }
-                        .frame(width: geometry.size.width * 0.6, height: geometry.size.height * 0.3)
-                        .background(Color.white)
-                        .cornerRadius(20)
-                        .shadow(radius: 10)
-                        .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-                        .transition(.scale)
-                    }
+                  
                 }
             }
+            LinearGradient(colors: [Color(hex:"#FFFAFA"),.clear], startPoint: .bottom, endPoint: .center)
+                .allowsHitTesting(false)
             //.edgesIgnoringSafeArea(.top) // Ensures the grid takes up the full screen
         //.background(Color(hex:"ede8e8"))
             

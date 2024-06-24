@@ -97,7 +97,7 @@ class JournalEntryList: ObservableObject {
 
 
 
-let first = JournalEntry(text:"first",color: Color(hex:"ff0000"),date:Date(),name:"name",expl:"")
-let second = JournalEntry(text:"second",color:Color(hex:"ffff00"),date:Date(),name:"namerino",expl:"")
-let third = JournalEntry(text:"third",color:Color(hex:"0000ff"),date: Date(),name:"namesky",expl:"")
+let first = JournalEntry(text:"first",color: Color(hex:"ff5500"),date:Date(),name:"name",expl:"")
+let second = JournalEntry(text:"second",color:Color(hex:"ffff22"),date:Date(),name:"namerino",expl:"")
+let third = JournalEntry(text:"third",color:Color(hex:"0055ff"),date: Date(),name:"namesky",expl:"")
 let fourth = JournalEntry(text:"third",color:Color(hex:"0890ff"),date: Date(),name:"namesky",expl:"")

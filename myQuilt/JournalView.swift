@@ -14,9 +14,11 @@ struct JournalView: View {
             VStack {
                 HStack {
                     Text("My Journal")
-                        .font(.custom("PlayfairDisplayRoman-ExtraBold", size: 17, relativeTo: .body))
-                        .foregroundColor(.white)
-                    //Spacer()
+                        .font(Font.custom("HelveticaNeue-Bold", size: 32))
+                       // .fontWeight(.black)
+                        .foregroundColor(.black)
+                        .padding(.leading,48)
+                    Spacer()
                 }
                // .padding(.leading, 48)
                 .padding(.top)
@@ -36,7 +38,7 @@ struct JournalView: View {
                 .tabViewStyle(.page(indexDisplayMode: .automatic))
                 //.cornerRadius(30)
                 .padding(.bottom)
-                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+                .shadow(color: .black.opacity(0.15), radius: 15, x: 0, y: 8)
                 
            //     if journalEntryList.myArray.count > 1 {
               //      Text("give it a swipe!")

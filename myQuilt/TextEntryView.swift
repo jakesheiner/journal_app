@@ -16,23 +16,18 @@ struct TextEntryView: View {
     @StateObject private var viewModel = OpenAIViewModel()
     var body: some View {
         
-                ZStack {
-                    Image("paper") // Replace "backgroundImage" with the name of your image
-                        .resizable()
-                        //.scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .ignoresSafeArea()
-                       // .clipped()
-                       // .cornerRadius(10)
-                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            ZStack {
+                Color(hex:"#FFFAFA")
+                GeometryReader { _ in
                     VStack {
                         ZStack {
-                            Text(Date(), formatter: dateFormatter)
-                                .font(.custom("PlayfairDisplayRoman-Bold", size: 17, relativeTo: .body))
-                                .foregroundColor(Color.black)
-                                
+                            
+                            
                             HStack{
-                               
+                                Text(Date(), formatter: dateFormatter)
+                                    .font(.headline)
+                                    .foregroundColor(Color.black)
+                                    .padding(.leading,32)
                                 Spacer()
                                 Button(action: {
                                     if viewModel.userInput == "" {
@@ -50,51 +45,72 @@ struct TextEntryView: View {
                                     
                                     
                                 }) {
-                                    Text("done")
-                                        .font(.custom("PlayfairDisplay-Regular", size: 17, relativeTo: .body))
-                                        .foregroundColor(.black)
-                                      
+                                    if viewModel.userInput == ""{
+                                        Text("cancel")
+                                            .font(.headline)
+                                            .foregroundColor(.black)
+                                            .padding(.horizontal)
+                                            .padding(.vertical,2)
+                                            .background(
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .stroke(Color.gray, lineWidth: 1.5) // Rounded rectangle stroke with no fill
+                                                                )
+                                           
+                                    }else{
+                                        Text("submit")
+                                            .font(.headline)
+                                            .foregroundColor(.black)
+                                            .padding(.horizontal)
+                                            .padding(.vertical,2)
+                                            .background(
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .stroke(Color.gray, lineWidth: 1.5)
+                                            )
+                                    }
+                                    
                                 }
                                 .padding()
                             }
                         }
                         TextEditor( text: $viewModel.userInput)
                             .focused($keyboardFocused)
-                                .onAppear {
-                                  DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                        keyboardFocused = true
-                                    }
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    keyboardFocused = true
                                 }
+                            }
+                            .ignoresSafeArea(.keyboard)
                         //  .foregroundColor(.white)
-                            .font(.custom("PlayfairDisplay-Regular", size: 17, relativeTo: .body))
+                            .font(.custom("HelveticaNeue-Light", size: 17, relativeTo: .body))
                             .textFieldStyle(.plain)
-                            .padding(16)
+                        // .padding(.vertical,16)
+                            .padding(.horizontal,32)
                             .scrollContentBackground(.hidden)
                             .foregroundColor(.black)
-                            //.background(Color(hex:"ffffff"))
-                           // .shadow(color:.black,radius:10)
-                        .cornerRadius(30)
+                        //.background(Color(hex:"ffffff"))
+                        // .shadow(color:.black,radius:10)
+                            .cornerRadius(30)
                     }
-                    //   if viewModel.userInput.isEmpty {
-                    VStack {
-                        
-                         
-                        
-                        
-                Spacer()
-                    }
-                    //   }
                 }
+                .ignoresSafeArea(.keyboard, edges: .bottom)
+                //   if viewModel.userInput.isEmpty {
                 
-        .background(Color.clear)
-        .contentShape(Rectangle()) // Make the entire VStack tappable
-                .onTapGesture {
-                    hideKeyboard()
-                }
-        
-        
-        
+                //   }
+            }
+            
+            .cornerRadius(30)
+            .padding(.top,16)
+            .padding(.horizontal,16)
+            .edgesIgnoringSafeArea(.bottom)
+            .background(Color.clear)
+            .contentShape(Rectangle()) // Make the entire VStack tappable
+            .onTapGesture {
+                hideKeyboard()
+            }
+       
+              
     }
+        
     func hideKeyboard() {
            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
        }

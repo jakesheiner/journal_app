@@ -10,7 +10,7 @@ import SwiftData
 
 @main
 struct journal_appApp: App {
-    
+   
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
