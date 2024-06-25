@@ -87,8 +87,13 @@ struct QuiltView: View {
                   
                 }
             }
-            LinearGradient(colors: [Color(hex:"#FFFAFA"),.clear], startPoint: .bottom, endPoint: .center)
-                .allowsHitTesting(false)
+          
+            LinearGradient(stops: [
+                Gradient.Stop(color: .clear, location: 0.5),
+                Gradient.Stop(color:Color(hex:"#FFFAFA"), location: 1),
+            ], startPoint: .center, endPoint: .bottom)
+                    .allowsHitTesting(false)
+            
             //.edgesIgnoringSafeArea(.top) // Ensures the grid takes up the full screen
         //.background(Color(hex:"ede8e8"))
             
