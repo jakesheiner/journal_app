@@ -32,7 +32,7 @@ struct JournalPageView: View {
                 ZStack {
                     HStack {
                         Text(colorItem.date, formatter: dateFormatter)
-                            .font(.headline)
+                            .font(Font.custom("HelveticaNeue-Medium", size: 12))
                             .foregroundColor(colorItem.color.color.isDark() ? .white : .black)
                             .opacity(0.7)
                         .padding(.top)
@@ -46,9 +46,9 @@ struct JournalPageView: View {
                                 Image(systemName:"arrowshape.turn.up.backward.2")
                                     .foregroundColor(colorItem.color.color.isDark() ? .white : .black)
                                     .opacity(0.7)
-                                    .font(.title2)
+                                    .font(.body)
                             })
-                            .padding(.horizontal,32)
+                            .padding(.horizontal,16)
                         }
                             
                        // Spacer()
@@ -56,7 +56,7 @@ struct JournalPageView: View {
                             Image(systemName:"x.circle")
                                 .foregroundColor(colorItem.color.color.isDark() ? .white : .black)
                                 .opacity(0.7)
-                                .font(.title2)
+                                .font(.body)
                         })
                     }
                     .padding([.top, .leading, .trailing], 32)
@@ -65,7 +65,7 @@ struct JournalPageView: View {
                 
                 HStack {
                     Text(colorItem.text)
-                        .font(Font.custom("HelveticaNeue-Medium", size: 28))
+                        .font(Font.custom("HelveticaNeue-Medium", size: 20))
                         .foregroundColor(colorItem.color.color.isDark() ? .white : .black)
                         .padding(.horizontal, 32)
                         .padding(.bottom, 32)
@@ -75,11 +75,11 @@ struct JournalPageView: View {
                 HStack {
                     VStack {
                         Text(colorItem.name)
-                            .font(Font.custom("HelveticaNeue-MediumItalic", size: 18))
+                            .font(Font.custom("HelveticaNeue-MediumItalic", size: 12))
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(colorItem.expl)
-                            .font(Font.custom("HelveticaNeue-Italic", size: 18))
+                            .font(Font.custom("HelveticaNeue-Italic", size: 12))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom,18)
                        
