@@ -39,9 +39,19 @@ struct QuiltView: View {
                         LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: 3), count: 3), spacing: 3) {
                             ForEach(journalEntryList.myArray) { square in
                                 ZStack {
-                                   
+                                    if let imagePath = square.imagePath,
+                                       let uiImage = loadImage(from: imagePath) {
+                                        Image(uiImage: uiImage)
+                                            .resizable()
+                                            .opacity(0.5)
+                                    }
                                     square.color.color
                                         .cornerRadius(2)
+                                        .blendMode(.multiply)
+                                    LinearGradient(gradient: Gradient(colors: [square.color.color, Color.clear]), // Define your colors here
+                                                startPoint: .leading, // Gradient starts at the top
+                                                endPoint: .trailing // Gradient ends at the bottom
+                                            )
                                     VStack {
                                         HStack {
                                             
@@ -127,7 +137,13 @@ struct QuiltView: View {
          //   .overlay(Color.black)
            // .frame(minHeight:2)
     }
-    
+    private func loadImage(from path: String) -> UIImage? {
+            let fileURL = URL(fileURLWithPath: path)
+            if let data = try? Data(contentsOf: fileURL) {
+                return UIImage(data: data)
+            }
+            return nil
+        }
     
 }
 

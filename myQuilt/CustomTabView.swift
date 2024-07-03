@@ -55,7 +55,7 @@ struct CustomTabView: View {
                                // .frame(width: 20, height: 20)
                                 .font(.title)
                                 .foregroundColor(.gray)
-                                .padding()
+                         .padding()
                                // .background(Circle().fill(Color.gray.opacity(0.3)))
                                // .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                         }
@@ -77,7 +77,7 @@ struct CustomTabView: View {
                         .padding(.horizontal, 64)
                         */
                     }
-                    .padding(.bottom)
+                   // .padding(.bottom)
                     
                        
                 }

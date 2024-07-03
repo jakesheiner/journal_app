@@ -12,16 +12,9 @@ struct JournalView: View {
              //   .edgesIgnoringSafeArea(.all)
             
             VStack {
-                HStack {
-                    Text("My Journal")
-                        .font(Font.custom("HelveticaNeue-Bold", size: 32))
-                       // .fontWeight(.black)
-                        .foregroundColor(.black)
-                        .padding(.leading,48)
-                    Spacer()
-                }
+               
                // .padding(.leading, 48)
-                .padding(.top)
+           
                 
                 TabView(selection: $selectedTab) {
                     if journalEntryList.myArray.isEmpty {

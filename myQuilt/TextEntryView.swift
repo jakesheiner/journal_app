@@ -34,11 +34,15 @@ struct TextEntryView: View {
                                         isPresented.toggle()
                                         
                                     }else{
-                                        viewModel.fetchResponse(){
-                                            viewModel.uploadResponse()
-                                            isPresented.toggle()
+                                       
+                                        viewModel.fetchResponseAndImage(){
+                                           // viewModel.uploadResponse()
+                                            print("uploaded")
+                                           // isPresented.toggle()
                                             viewModel.userInput = ""
                                         }
+                                        isPresented.toggle()
+                                        //viewModel.userInput = ""
                                     }
                                     // print(viewModel.responseText)
                                     // print("test")
@@ -46,22 +50,22 @@ struct TextEntryView: View {
                                     
                                 }) {
                                     if viewModel.userInput == ""{
-                                        Text("cancel")
-                                            .font(.headline)
+                                        Text("Cancel")
+                                            .font(.caption)
                                             .foregroundColor(.black)
                                             .padding(.horizontal)
-                                            .padding(.vertical,2)
+                                            .padding(.vertical,4)
                                             .background(
                                             RoundedRectangle(cornerRadius: 20)
                                                 .stroke(Color.gray, lineWidth: 1.5) // Rounded rectangle stroke with no fill
                                                                 )
                                            
                                     }else{
-                                        Text("submit")
-                                            .font(.headline)
+                                        Text("Submit")
+                                            .font(.caption)
                                             .foregroundColor(.black)
                                             .padding(.horizontal)
-                                            .padding(.vertical,2)
+                                            .padding(.vertical,4)
                                             .background(
                                             RoundedRectangle(cornerRadius: 20)
                                                 .stroke(Color.gray, lineWidth: 1.5)
