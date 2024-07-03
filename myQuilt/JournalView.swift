@@ -2,7 +2,7 @@ import SwiftUI
 
 struct JournalView: View {
     @StateObject private var journalEntryList = JournalEntryList.shared
-    @State private var selectedTab = 0
+    @Binding var selectedTab: Int
    
     var body: some View {
         ZStack {
@@ -54,5 +54,5 @@ struct JournalView: View {
 }
 
 #Preview {
-    JournalView()
+    JournalView(selectedTab: .constant(0))
 }

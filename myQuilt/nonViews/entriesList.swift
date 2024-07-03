@@ -1,12 +1,3 @@
-//
-//  entriesList.swift
-//  journal_app
-//
-//  Created by Jacob Sheiner on 6/11/24.
-//
-import SwiftUI
-import Foundation
-
 import SwiftUI
 import Foundation
 
@@ -17,14 +8,16 @@ struct JournalEntry: Identifiable, Codable {
     let date: Date
     let name: String
     let expl: String
+    let imagePath: String?
 
-    init(id: UUID = UUID(), text: String, color: Color, date: Date, name: String, expl: String) {
+    init(id: UUID = UUID(), text: String, color: Color, date: Date, name: String, expl: String, imagePath: String? = nil) {
         self.id = id
         self.text = text
         self.color = CodableColor(color: color)
         self.date = date
         self.name = name
         self.expl = expl
+        self.imagePath = imagePath
     }
 }
 
@@ -53,7 +46,6 @@ struct CodableColor: Codable {
     }
 }
 
-
 class JournalEntryList: ObservableObject {
     static let shared = JournalEntryList()
 
@@ -63,7 +55,7 @@ class JournalEntryList: ObservableObject {
         loadFromUserDefaults()
     }
 
-    @Published var myArray: [JournalEntry] = [first,second, third, fourth] {
+    @Published var myArray: [JournalEntry] = [first, second, third, fourth] {
         didSet {
             saveToUserDefaults()
         }
@@ -81,6 +73,10 @@ class JournalEntryList: ObservableObject {
         myArray.removeAll { $0.name == name }
     }
 
+    func indexOfEntry(withID id: UUID) -> Int? {
+        return myArray.firstIndex { $0.id == id }
+    }
+    
     private func saveToUserDefaults() {
         if let encoded = try? JSONEncoder().encode(myArray) {
             UserDefaults.standard.set(encoded, forKey: userDefaultsKey)
@@ -95,9 +91,7 @@ class JournalEntryList: ObservableObject {
     }
 }
 
-
-
-let first = JournalEntry(text:"first",color: Color(hex:"ff5500"),date:Date(),name:"name",expl:"")
-let second = JournalEntry(text:"second",color:Color(hex:"ffff22"),date:Date(),name:"namerino",expl:"")
-let third = JournalEntry(text:"third",color:Color(hex:"0055ff"),date: Date(),name:"namesky",expl:"")
-let fourth = JournalEntry(text:"third",color:Color(hex:"0890ff"),date: Date(),name:"namesky",expl:"")
+let first = JournalEntry(text: "first", color: Color(hex: "ff5500"), date: Date(), name: "name", expl: "", imagePath: nil)
+let second = JournalEntry(text: "second", color: Color(hex: "ffff22"), date: Date(), name: "namerino", expl: "", imagePath: nil)
+let third = JournalEntry(text: "third", color: Color(hex: "0055ff"), date: Date(), name: "namesky", expl: "", imagePath: nil)
+let fourth = JournalEntry(text: "fourth", color: Color(hex: "0890ff"), date: Date(), name: "namesky", expl: "", imagePath: nil)

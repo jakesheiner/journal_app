@@ -24,18 +24,18 @@ struct CustomTabView: View {
                 
                 
                 VStack {
-                    if selectedTab == 0 {
-                        JournalView()
+                  //  if selectedTab == 0 {
+                    //    JournalView(selectedTab: .constant(0))
                         // .padding(.horizontal)
                         
-                    } else {
-                        QuiltView()
-                    }
+                    //} else {
+                        QuiltView(selectedTab: 0)
+                    //}
                     //Spacer()
                     
                     Spacer()
-                    HStack {
-                        Button(action: {
+                   HStack {
+                       /*   Button(action: {
                             selectedTab = 0
                         }) {
                             Image(systemName: "book")
@@ -46,6 +46,7 @@ struct CustomTabView: View {
                         
                         .padding(.horizontal, 64)
                         Spacer()
+                   */
                         Button(action: {
                             showingCredits.toggle()
                         }) {
@@ -62,6 +63,7 @@ struct CustomTabView: View {
                         
                         
                         .ignoresSafeArea(.keyboard)
+                       /*
                         Spacer()
                         Button(action: {
                             selectedTab = 1
@@ -73,11 +75,13 @@ struct CustomTabView: View {
                             
                         }
                         .padding(.horizontal, 64)
+                        */
                     }
                     .padding(.bottom)
                     
-                    
+                       
                 }
+                       
                 if(showingCredits){
                     Rectangle()
                         .fill(.thinMaterial)

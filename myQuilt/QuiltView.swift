@@ -3,8 +3,9 @@ import SwiftUI
 
 
 struct QuiltView: View {
+    @State private var showJournal = false
     @ObservedObject private var journalEntryList = JournalEntryList.shared
-    
+    @State var selectedTab: Int
     
     @State private var selectedSquare: JournalEntry? = nil
     
@@ -32,18 +33,20 @@ struct QuiltView: View {
                     let itemSize = (screenWidth-12) / 3
                     
                     ZStack(alignment: .top) {
-                        
+                       
                         ScrollView{
                             
                         LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: 3), count: 3), spacing: 3) {
                             ForEach(journalEntryList.myArray) { square in
                                 ZStack {
+                                   
                                     square.color.color
                                         .cornerRadius(2)
                                     VStack {
                                         HStack {
                                             
                                             Text("\(square.date, formatter: dateFormatter)")
+                                            
                                                 .font(.caption)
                                                 .fontWeight(.heavy)
                                            
@@ -51,6 +54,7 @@ struct QuiltView: View {
                                         
                                             Spacer()
                                         }
+                                       // Text("\(journalEntryList.indexOfEntry(withID: square.id) ?? 0)")
                                         HStack {
                                             Text(square.date, formatter: timeFormatter)
                                                 .font(.caption2)
@@ -68,9 +72,15 @@ struct QuiltView: View {
                                      
                                         //.blendMode(.multiply)
                                       //  .shadow(color:Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 0.2),radius: 10)
-                                        .frame(width: itemSize, height: itemSize)
+                                .frame(width: itemSize, height: itemSize*0.618)
                                         .onTapGesture {
+                                            selectedTab = journalEntryList.indexOfEntry(withID: square.id) ?? 0
                                             selectedSquare = square
+                                            
+                                        
+                                            
+                                            showJournal.toggle()
+                                           // JournalView()
                                         }
                                         .contextMenu {
                                             Button(action: {
@@ -85,7 +95,20 @@ struct QuiltView: View {
                         }
                     }
                         .frame(width: screenWidth)
-                      
+                        if(showJournal){
+                           
+                            ZStack {
+                                Rectangle()
+                                    .fill(.thinMaterial)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    .ignoresSafeArea()
+                                JournalView(selectedTab: $selectedTab)
+                                    .transition(.scale)
+                                    .onTapGesture {
+                                        showJournal.toggle()
+                                }
+                            }
+                        }
                     }
                 }
               
@@ -110,6 +133,6 @@ struct QuiltView: View {
 
 struct QuiltView_Previews: PreviewProvider {
     static var previews: some View {
-        QuiltView()
+        QuiltView(selectedTab: 0)
     }
 }
