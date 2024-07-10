@@ -1,0 +1,12 @@
+//
+//  apikey.xcconfig
+//  myQuilt
+//
+//  Created by Jacob Sheiner on 7/10/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY = sk-proj-8H4vPBH8qcV4SUrQb6JLT3BlbkFJwkFvwDaEu0Ys5DiOKke0
+
