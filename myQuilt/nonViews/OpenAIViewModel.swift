@@ -11,7 +11,13 @@ class OpenAIViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     private var cancellables = Set<AnyCancellable>()
     
-    private let apiKey = key // Replace with your actual API key
+    private let apiKey: String = {
+        if let key = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String {
+            return key
+        } else {
+            fatalError("API Key not found in Info.plist")
+        }
+    }() // Replace with your actual API key
 
     func fetchResponseAndImage(completion: @escaping () -> Void) {
         guard !userInput.isEmpty else { return }

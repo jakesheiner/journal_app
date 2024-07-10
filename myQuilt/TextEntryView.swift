@@ -36,16 +36,14 @@ struct TextEntryView: View {
                                     }else{
                                        
                                         viewModel.fetchResponseAndImage(){
-                                           // viewModel.uploadResponse()
                                             print("uploaded")
-                                           // isPresented.toggle()
+                                           
                                             viewModel.userInput = ""
                                         }
                                         isPresented.toggle()
-                                        //viewModel.userInput = ""
+                                        
                                     }
-                                    // print(viewModel.responseText)
-                                    // print("test")
+                                   
                                     
                                     
                                 }) {
