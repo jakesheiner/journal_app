@@ -13,7 +13,7 @@ To run this project, you will need to set up environment variables.
 3. Configure the `.xcconfig` file in Xcode:
 - Open your Xcode project.
 - Select the project, then select the `info` tab.
-- Set the `Config.xcconfig` file as the base configuration for your desired build configuration (e.g., Debug, Release).
+- Under 'configurations' set the `Config.xcconfig` file as the base configuration for your desired build configuration (e.g., Debug, Release).
 
 4. Add a new entry in `Info.plist` with the key `API_KEY` and value `$(API_KEY)`.
 
