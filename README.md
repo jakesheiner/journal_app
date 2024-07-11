@@ -5,7 +5,8 @@
 To run this project, you will need to set up environment variables.
 
 1. Create a `.xcconfig` file in the root directory of the project (or copy from the provided template).
-2. Add the following content to the `.xcconfig` file:
+     e.g. 'my_apikey.xcconfig'
+3. Add the following content to the `.xcconfig` file:
 
   API_KEY = your_api_key_here
 
