@@ -56,7 +56,7 @@ struct JournalPageView: View {
                         .font(Font.custom("HelveticaNeue-Medium", size: 20))
                         .foregroundColor(colorItem.color.color.isDark() ? .white : .black)
                         .padding(.horizontal, 32)
-                        .padding(.bottom, 32)
+                        .padding(.bottom, 12)
                     Spacer()
                 }
         
@@ -71,7 +71,7 @@ struct JournalPageView: View {
                         Text(colorItem.expl)
                             .font(Font.custom("HelveticaNeue-Italic", size: 12))
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom,18)
+                            .padding(.bottom,32)
                        
                     }
                    
@@ -80,7 +80,7 @@ struct JournalPageView: View {
                         .opacity(0.7)
                     Spacer()
                 }
-                Spacer()
+                
                 ZStack{
                     
                     if let imagePath = colorItem.imagePath,
@@ -88,19 +88,18 @@ struct JournalPageView: View {
                         Image(uiImage: uiImage)
                             .resizable()
                             .aspectRatio( contentMode: .fit)
-                            .frame(maxWidth: 360, maxHeight: 360)
+                            .frame(maxWidth: 300, maxHeight: 300)
                         // .padding(.vertical)
                             .edgesIgnoringSafeArea(.all)
                             .opacity(0.5)
                         //.cornerRadius(30)
                             .blendMode(.multiply)
                     }
-                   Rectangle()
-                        
-                        .fill(LinearGradient(colors: [colorItem.color.color, Color.clear], startPoint: .top, endPoint: .center))
-                        .frame(maxWidth: 360, maxHeight: 360)
+                  
                 }
+                Spacer()
             }
+          
         }
         
         .cornerRadius(30)
@@ -124,7 +123,7 @@ struct JournalPageView: View {
             date: Date(),
             name: "Sample Name",
             expl:"what is going on and on and on and on and this color was chosen for a reason etc.",
-            imagePath: "/Users/jacobsheiner/Library/Developer/Xcode/UserData/Previews/Simulator Devices/AD675D2E-8C79-48F8-8260-DAEE1D626692/data/Containers/Data/Application/7D3FF4C8-EC7D-4482-9191-7FA38004E016/Documents/2682E845-8F3C-4EC2-B142-1829B415D901.png"
+            imagePath: "/Users/jacobsheiner/Desktop/dalle/quilt_example.jpeg"
            
         ),
         selectedTab: .constant(2),

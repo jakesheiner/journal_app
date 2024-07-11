@@ -40,7 +40,7 @@ struct QuiltView: View {
                                 ZStack {
                                     
                                     Color(hex:"ececec")
-                                        .frame(width: itemSize, height: itemSize*0.618)
+                                        .frame(width: itemSize, height: itemSize)
                                     LoadingIndicator(animation: .threeBalls )
                                         .opacity(0.3)
                                    // Text("loading...")
@@ -48,19 +48,27 @@ struct QuiltView: View {
                             }
                             ForEach(journalEntryList.myArray) { square in
                                 ZStack {
-                                    if let imagePath = square.imagePath,
-                                       let uiImage = loadImage(from: imagePath) {
-                                        Image(uiImage: uiImage)
-                                            .resizable()
-                                            .opacity(0.5)
-                                    }
                                     square.color.color
                                         .cornerRadius(2)
-                                        .blendMode(.multiply)
-                                    LinearGradient(gradient: Gradient(colors: [square.color.color, Color.clear]), // Define your colors here
-                                                startPoint: .leading, // Gradient starts at the top
-                                                endPoint: .trailing // Gradient ends at the bottom
-                                            )
+                                    HStack{
+                                       
+                                           // Spacer()
+                                        ZStack{
+                                           
+                                                
+                                            if let imagePath = square.imagePath,
+                                               let uiImage = loadImage(from: imagePath) {
+                                                Image(uiImage: uiImage)
+                                                    .resizable()
+                                                    .aspectRatio( contentMode: .fit)
+                                                    .opacity(0.5)
+                                                    .blendMode(.multiply)
+                                            }
+                                        }
+                                    }
+                                    LinearGradient(colors: [square.color.color, Color.clear], startPoint: .top, endPoint: .bottom)
+                                       
+                                   
                                     VStack {
                                         HStack {
                                             
@@ -91,7 +99,7 @@ struct QuiltView: View {
                                      
                                         //.blendMode(.multiply)
                                       //  .shadow(color:Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 0.2),radius: 10)
-                                .frame(width: itemSize, height: itemSize*0.618)
+                                .frame(width: itemSize, height: itemSize)
                                         .onTapGesture {
                                             selectedTab = journalEntryList.indexOfEntry(withID: square.id) ?? 0
                                             selectedSquare = square

@@ -69,7 +69,7 @@ struct TextEntryView: View {
                                             .padding(.vertical,4)
                                             .background(
                                             RoundedRectangle(cornerRadius: 20)
-                                                .fill(Color.gray)
+                                                .fill(Color(hex: "ececec" ))
                                             )
                                     }
                                     
