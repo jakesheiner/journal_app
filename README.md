@@ -25,10 +25,10 @@ To run this project, you will need to set up environment variables.
 - Make sure not to commit the `.xcconfig` file containing sensitive information to version control.
 
 
-##Running the app on your device
+## Running the app on your device 
 
-To run this app on your phone, first pair the device with Xcode, instructions here:
+-To run this app on your phone, first pair the device with Xcode, instructions here:
 https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device
 
-then go to product -> destination -> select your device from the menu,
-then you can build and run the app from your device
+-then go to product -> destination -> select your device from the menu,
+-then you can build and run the app from your device
