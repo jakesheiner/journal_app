@@ -14,6 +14,8 @@ struct TextEntryView: View {
     }
     @Binding var isPresented: Bool
     @StateObject private var viewModel = OpenAIViewModel()
+    @Binding var loading: Bool
+    
     var body: some View {
         
             ZStack {
@@ -37,10 +39,11 @@ struct TextEntryView: View {
                                        
                                         viewModel.fetchResponseAndImage(){
                                             print("uploaded")
-                                           
+                                            loading.toggle()
                                             viewModel.userInput = ""
                                         }
                                         isPresented.toggle()
+                                        loading.toggle()
                                         
                                     }
                                    
@@ -55,7 +58,7 @@ struct TextEntryView: View {
                                             .padding(.vertical,4)
                                             .background(
                                             RoundedRectangle(cornerRadius: 20)
-                                                .stroke(Color.gray, lineWidth: 1.5) // Rounded rectangle stroke with no fill
+                                                .fill(Color(hex: "ececec" )) 
                                                                 )
                                            
                                     }else{
@@ -66,7 +69,7 @@ struct TextEntryView: View {
                                             .padding(.vertical,4)
                                             .background(
                                             RoundedRectangle(cornerRadius: 20)
-                                                .stroke(Color.gray, lineWidth: 1.5)
+                                                .fill(Color.gray)
                                             )
                                     }
                                     
@@ -120,8 +123,9 @@ struct TextEntryView: View {
 
 struct TextEntryView_Previews: PreviewProvider {
     @State static var isPresented = true
+    @State static var loading = false
     static var previews: some View {
-        TextEntryView(isPresented: $isPresented)
+        TextEntryView(isPresented: $isPresented, loading: $loading)
     }
 }
 

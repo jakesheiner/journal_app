@@ -1,13 +1,12 @@
 import SwiftUI
 
 
-
 struct QuiltView: View {
     @State private var showJournal = false
     @ObservedObject private var journalEntryList = JournalEntryList.shared
     @State var selectedTab: Int
-    
     @State private var selectedSquare: JournalEntry? = nil
+    @Binding var isLoading: Bool
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -37,6 +36,16 @@ struct QuiltView: View {
                         ScrollView{
                             
                         LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: 3), count: 3), spacing: 3) {
+                            if (isLoading){
+                                ZStack {
+                                    
+                                    Color(hex:"ececec")
+                                        .frame(width: itemSize, height: itemSize*0.618)
+                                    LoadingIndicator(animation: .threeBalls )
+                                        .opacity(0.3)
+                                   // Text("loading...")
+                                }
+                            }
                             ForEach(journalEntryList.myArray) { square in
                                 ZStack {
                                     if let imagePath = square.imagePath,
@@ -148,7 +157,8 @@ struct QuiltView: View {
 }
 
 struct QuiltView_Previews: PreviewProvider {
+    @State static var loading = true
     static var previews: some View {
-        QuiltView(selectedTab: 0)
+        QuiltView(selectedTab: 0, isLoading: $loading)
     }
 }

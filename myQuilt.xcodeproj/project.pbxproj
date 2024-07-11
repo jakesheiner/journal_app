@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E20071D02C1E3CCB009DF9B6 /* PlayfairDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E20071CF2C1E3C18009DF9B6 /* PlayfairDisplay.ttf */; };
 		E21027E32C1F85F30076F88A /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21027E22C1F85F30076F88A /* CustomTabView.swift */; };
+		E293A9B32C3F3CDB00FDD8D4 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293A9B22C3F3CDB00FDD8D4 /* LoadingIndicator.swift */; };
+		E293A9B52C3F3D0900FDD8D4 /* LoadingThreeBalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293A9B42C3F3D0900FDD8D4 /* LoadingThreeBalls.swift */; };
+		E293A9B72C3F3D4500FDD8D4 /* LoadingThreeBallsBouncing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293A9B62C3F3D4500FDD8D4 /* LoadingThreeBallsBouncing.swift */; };
 		E2D642382C14D18A001F6AF9 /* myQuiltApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D642372C14D18A001F6AF9 /* myQuiltApp.swift */; };
 		E2D6423E2C14D18B001F6AF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2D6423D2C14D18B001F6AF9 /* Assets.xcassets */; };
 		E2D642412C14D18B001F6AF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2D642402C14D18B001F6AF9 /* Preview Assets.xcassets */; };
@@ -43,6 +46,9 @@
 		E20071D12C1E3D06009DF9B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E21027E22C1F85F30076F88A /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		E28DEBF62C3EF9C9000F0ECF /* apikey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = apikey.xcconfig; sourceTree = "<group>"; };
+		E293A9B22C3F3CDB00FDD8D4 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		E293A9B42C3F3D0900FDD8D4 /* LoadingThreeBalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThreeBalls.swift; sourceTree = "<group>"; };
+		E293A9B62C3F3D4500FDD8D4 /* LoadingThreeBallsBouncing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThreeBallsBouncing.swift; sourceTree = "<group>"; };
 		E2D642342C14D18A001F6AF9 /* myQuilt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myQuilt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D642372C14D18A001F6AF9 /* myQuiltApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myQuiltApp.swift; sourceTree = "<group>"; };
 		E2D6423D2C14D18B001F6AF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +130,9 @@
 				E2D643542C18CD91001F6AF9 /* TextEntryView.swift */,
 				E2D6435A2C1A9FEE001F6AF9 /* nonViews */,
 				E2D6435F2C1CFC65001F6AF9 /* JournalPageView.swift */,
+				E293A9B22C3F3CDB00FDD8D4 /* LoadingIndicator.swift */,
+				E293A9B42C3F3D0900FDD8D4 /* LoadingThreeBalls.swift */,
+				E293A9B62C3F3D4500FDD8D4 /* LoadingThreeBallsBouncing.swift */,
 			);
 			path = myQuilt;
 			sourceTree = "<group>";
@@ -234,6 +243,9 @@
 				Base,
 			);
 			mainGroup = E2D6422B2C14D18A001F6AF9;
+			packageReferences = (
+				E209380E2C3F20B500964753 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */,
+			);
 			productRefGroup = E2D642352C14D18A001F6AF9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,8 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E293A9B52C3F3D0900FDD8D4 /* LoadingThreeBalls.swift in Sources */,
 				E2D6426C2C17BFC5001F6AF9 /* QuiltView.swift in Sources */,
 				E2D643572C1A9922001F6AF9 /* ColorExt.swift in Sources */,
+				E293A9B72C3F3D4500FDD8D4 /* LoadingThreeBallsBouncing.swift in Sources */,
+				E293A9B32C3F3CDB00FDD8D4 /* LoadingIndicator.swift in Sources */,
 				E2D6426E2C1898BE001F6AF9 /* entriesList.swift in Sources */,
 				E21027E32C1F85F30076F88A /* CustomTabView.swift in Sources */,
 				E2D643552C18CD91001F6AF9 /* TextEntryView.swift in Sources */,
@@ -620,6 +635,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E209380E2C3F20B500964753 /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = E2D6422C2C14D18A001F6AF9 /* Project object */;
 }

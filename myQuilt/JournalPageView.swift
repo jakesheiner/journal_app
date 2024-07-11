@@ -25,24 +25,14 @@ struct JournalPageView: View {
                // .resizable()
                // .scaledToFill()
               //  .edgesIgnoringSafeArea(.all)
-          
-            if let imagePath = colorItem.imagePath,
-                           let uiImage = loadImage(from: imagePath) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                               // .aspectRatio(contentMode: .fit)
-                               // .frame(maxWidth: 300, maxHeight: 300)
-                               // .padding(.vertical)
-                                .edgesIgnoringSafeArea(.all)
-                                .opacity(0.5)
-                        }
             colorItem.color.color
-              .blendMode(.multiply)
+            
+              
                // .edgesIgnoringSafeArea(.all)
-            LinearGradient(gradient: Gradient(colors: [colorItem.color.color, Color.clear]), // Define your colors here
-                        startPoint: .top, // Gradient starts at the top
-                        endPoint: .bottom // Gradient ends at the bottom
-                    )
+          //  LinearGradient(gradient: Gradient(colors: [colorItem.color.color, Color.clear]), // Define your colors here
+                      //  startPoint: .top, // Gradient starts at the top
+                      //  endPoint: .bottom // Gradient ends at the bottom
+                  //  )
             VStack {
                 ZStack {
                     HStack {
@@ -55,24 +45,7 @@ struct JournalPageView: View {
                         Spacer()
                     }
                     HStack {
-                        Spacer()
-                        if selectedTab > 0 {
-                            Button(action: { selectedTab = 0 }, label: {
-                                Image(systemName:"arrowshape.turn.up.backward.2")
-                                    .foregroundColor(colorItem.color.color.isDark() ? .white : .black)
-                                    .opacity(0.7)
-                                    .font(.body)
-                            })
-                            .padding(.horizontal,16)
-                        }
-                            
-                       // Spacer()
-                        Button(action: { journalEntryList.removeObject(withID: colorItem.id) }, label: {
-                            Image(systemName:"x.circle")
-                                .foregroundColor(colorItem.color.color.isDark() ? .white : .black)
-                                .opacity(0.7)
-                                .font(.body)
-                        })
+                        
                     }
                     .padding([.top, .leading, .trailing], 32)
                 .padding(.bottom, 16)
@@ -87,12 +60,14 @@ struct JournalPageView: View {
                     Spacer()
                 }
         
+                
                 HStack {
                     VStack {
                         Text(colorItem.name)
                             .font(Font.custom("HelveticaNeue-MediumItalic", size: 12))
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                        
                         Text(colorItem.expl)
                             .font(Font.custom("HelveticaNeue-Italic", size: 12))
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -106,9 +81,28 @@ struct JournalPageView: View {
                     Spacer()
                 }
                 Spacer()
+                ZStack{
+                    
+                    if let imagePath = colorItem.imagePath,
+                       let uiImage = loadImage(from: imagePath) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio( contentMode: .fit)
+                            .frame(maxWidth: 360, maxHeight: 360)
+                        // .padding(.vertical)
+                            .edgesIgnoringSafeArea(.all)
+                            .opacity(0.5)
+                        //.cornerRadius(30)
+                            .blendMode(.multiply)
+                    }
+                   Rectangle()
+                        
+                        .fill(LinearGradient(colors: [colorItem.color.color, Color.clear], startPoint: .top, endPoint: .center))
+                        .frame(maxWidth: 360, maxHeight: 360)
+                }
             }
         }
-       
+        
         .cornerRadius(30)
        .padding(.horizontal,16)
         
@@ -130,7 +124,7 @@ struct JournalPageView: View {
             date: Date(),
             name: "Sample Name",
             expl:"what is going on and on and on and on and this color was chosen for a reason etc.",
-            imagePath: "/Users/jacobsheiner/Library/Developer/CoreSimulator/Devices/3D34AB63-86DE-49D7-899A-6091D30DFE0F/data/Containers/Data/Application/D6283241-9565-47E6-BFB5-7CA9C74B82A3/Documents/EB359FB1-65D9-46E6-AD3E-A182545BAB13.png"
+            imagePath: "/Users/jacobsheiner/Library/Developer/Xcode/UserData/Previews/Simulator Devices/AD675D2E-8C79-48F8-8260-DAEE1D626692/data/Containers/Data/Application/7D3FF4C8-EC7D-4482-9191-7FA38004E016/Documents/2682E845-8F3C-4EC2-B142-1829B415D901.png"
            
         ),
         selectedTab: .constant(2),

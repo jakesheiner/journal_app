@@ -5,14 +5,13 @@
 //  Created by Jacob Sheiner on 6/16/24.
 //
 
-import SwiftUI
 
 import SwiftUI
 
 struct CustomTabView: View {
     @State private var showingCredits = false
     @State private var selectedTab = 0
-
+    @State private var loading: Bool = false
     var body: some View {
  
             ZStack {
@@ -29,7 +28,7 @@ struct CustomTabView: View {
                         // .padding(.horizontal)
                         
                     //} else {
-                        QuiltView(selectedTab: 0)
+                    QuiltView(selectedTab: 0, isLoading: $loading)
                     //}
                     //Spacer()
                     
@@ -92,7 +91,7 @@ struct CustomTabView: View {
                 
             }
             .fullScreenCover(isPresented: $showingCredits) {
-                TextEntryView(isPresented: $showingCredits)
+                TextEntryView(isPresented: $showingCredits, loading: $loading)
                     .presentationDetents([.fraction(0.99), .large])
                     .presentationBackground(.clear)
                 
