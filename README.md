@@ -1,5 +1,10 @@
 # myQuilt
 
+## Overview
+
+myQuilt, an AI powered journaling app
+I designed and implemented a journaling app, which leverages the OpenAI API for text and image generation. The app uses the power of AI to create a visual record of the user's mood by crating a color and pattern representation of the users' input. The result is a quilt: a grid of blocks, each with a pattern and color based off of the journal entries of the user. At a glance the user is provided with a visual memory of their emotions, and has the option to select any square to reread their own entry.
+
 ## Setup
 
 To run this project, you will need to set up environment variables.
