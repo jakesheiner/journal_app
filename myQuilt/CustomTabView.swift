@@ -12,84 +12,101 @@ struct CustomTabView: View {
     @State private var showingCredits = false
     @State private var selectedTab = 0
     @State private var loading: Bool = false
+    @State private var showJournal: Bool = false
+   
+   
     var body: some View {
  
-            ZStack {
-                Color(hex:"#FFFAFA")
+        ZStack {
+            Color(hex:"#FFFAFA")
+                .ignoresSafeArea()
+            // LinearGradient(gradient: Gradient(colors: [.white, .pink]), startPoint: .top, endPoint: .bottom)
+            
+            
+            
+            
+            
+            //  if selectedTab == 0 {
+            //    JournalView(selectedTab: .constant(0))
+            // .padding(.horizontal)
+            
+            //} else {
+            QuiltView(showJournal: $showJournal, selectedTab: 0, isLoading: $loading)
+            
+            //}
+            //Spacer()
+            
+            
+            
+            // .padding(.bottom)
+            
+            
+            
+            
+            
+            
+            if(showingCredits){
+                Rectangle()
+                    .fill(.thinMaterial)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea()
-                // LinearGradient(gradient: Gradient(colors: [.white, .pink]), startPoint: .top, endPoint: .bottom)
-                
-                
-                
-                
-                VStack {
-                  //  if selectedTab == 0 {
-                    //    JournalView(selectedTab: .constant(0))
-                        // .padding(.horizontal)
-                        
-                    //} else {
-                    QuiltView(selectedTab: 0, isLoading: $loading)
-                    //}
-                    //Spacer()
-                    
-                    Spacer()
-                   HStack {
-                       /*   Button(action: {
-                            selectedTab = 0
-                        }) {
-                            Image(systemName: "book")
-                            // Text("First")
-                                .foregroundColor(selectedTab == 0 ? .black : .gray)
-                                .font(.title2)
-                        }
-                        
-                        .padding(.horizontal, 64)
-                        Spacer()
-                   */
-                        Button(action: {
-                            showingCredits.toggle()
-                        }) {
-                            Image(systemName: "plus.app.fill")
-                               // .resizable()
-                               // .frame(width: 20, height: 20)
-                                .font(.title)
-                                .foregroundColor(.gray)
-                         .padding()
-                               // .background(Circle().fill(Color.gray.opacity(0.3)))
-                               // .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                        }
-                        
-                        
-                        
-                        .ignoresSafeArea(.keyboard)
-                       /*
-                        Spacer()
-                        Button(action: {
-                            selectedTab = 1
-                        }) {
-                            
-                            Image(systemName: "squareshape.split.3x3")
-                                .foregroundColor(selectedTab == 1 ? .black : .gray)
-                                .font(.title2)
-                            
-                        }
-                        .padding(.horizontal, 64)
-                        */
-                    }
-                   // .padding(.bottom)
-                    
-                       
-                }
-                       
-                if(showingCredits){
-                    Rectangle()
-                        .fill(.thinMaterial)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .ignoresSafeArea()
-                }
-                //  .padding(320)
-                
             }
+            //  .padding(320)
+            if(showJournal == false){
+            VStack {
+                Spacer()
+                HStack {
+                    /*   Button(action: {
+                     selectedTab = 0
+                     }) {
+                     Image(systemName: "book")
+                     // Text("First")
+                     .foregroundColor(selectedTab == 0 ? .black : .gray)
+                     .font(.title2)
+                     }
+                     
+                     .padding(.horizontal, 64)
+                     Spacer()
+                     */
+                    Button(action: {
+                        showingCredits.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                        
+                        // .resizable()
+                        
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                            .padding()
+                            .background(Circle()
+                                .fill(.white)
+                                .frame(width: 80, height:80)
+                            )
+                            .shadow(radius: 5)
+                    }
+                    
+                    
+                    
+                    .ignoresSafeArea(.keyboard)
+                    /*
+                     Spacer()
+                     Button(action: {
+                     selectedTab = 1
+                     }) {
+                     
+                     Image(systemName: "squareshape.split.3x3")
+                     .foregroundColor(selectedTab == 1 ? .black : .gray)
+                     .font(.title2)
+                     
+                     }
+                     .padding(.horizontal, 64)
+                     */
+                }
+                .padding(30)
+            }
+        }
+            }
+            //.edgesIgnoringSafeArea(.bottom)
             .fullScreenCover(isPresented: $showingCredits) {
                 TextEntryView(isPresented: $showingCredits, loading: $loading)
                     .presentationDetents([.fraction(0.99), .large])
@@ -105,15 +122,13 @@ struct CustomTabView: View {
 }
 
 
-struct YourApp: App {
-    var body: some Scene {
-        WindowGroup {
-            CustomTabView()
-        }
+
+
+
+
+struct CustomTabView_Previews: PreviewProvider {
+   
+    static var previews: some View {
+        CustomTabView()
     }
-}
-
-
-#Preview {
-    CustomTabView()
 }

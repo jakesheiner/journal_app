@@ -2,7 +2,7 @@ import SwiftUI
 
 
 struct QuiltView: View {
-    @State private var showJournal = false
+    @Binding var showJournal: Bool
     @ObservedObject private var journalEntryList = JournalEntryList.shared
     @State var selectedTab: Int
     @State private var selectedSquare: JournalEntry? = nil
@@ -122,6 +122,24 @@ struct QuiltView: View {
                         }
                     }
                         .frame(width: screenWidth)
+                        Rectangle()
+                        
+                                       .fill(.thinMaterial)
+                                       .mask {
+                                                  
+                                                       LinearGradient(
+                                                        stops: [
+                                                            .init(color: .black.opacity(1), location: 0.05),
+                                                            .init(color: .black.opacity(0), location: 0.2),
+                                                        ],
+                                                           startPoint: .bottom,
+                                                           endPoint: .top
+                                                       )
+                                                      
+                                                   
+                                               }
+                                       .allowsHitTesting(false)
+                                       .edgesIgnoringSafeArea(.bottom)
                         if(showJournal){
                            
                             ZStack {
@@ -166,7 +184,8 @@ struct QuiltView: View {
 
 struct QuiltView_Previews: PreviewProvider {
     @State static var loading = true
+    @State static var showJournal = false
     static var previews: some View {
-        QuiltView(selectedTab: 0, isLoading: $loading)
+        QuiltView(showJournal: $showJournal ,selectedTab: 0, isLoading: $loading)
     }
 }

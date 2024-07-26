@@ -14,8 +14,9 @@ struct journal_appApp: App {
   
 
     var body: some Scene {
+       
         WindowGroup {
-            
+           
             CustomTabView()
            
 
