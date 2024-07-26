@@ -39,11 +39,11 @@ struct TextEntryView: View {
                                        
                                         viewModel.fetchResponseAndImage(){
                                             print("uploaded")
-                                            loading.toggle()
+                                            loading = false
                                             viewModel.userInput = ""
                                         }
                                         isPresented.toggle()
-                                        loading.toggle()
+                                        loading = true
                                         
                                     }
                                    
