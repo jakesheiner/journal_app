@@ -41,7 +41,7 @@ struct QuiltView: View {
                                     
                                     Color(hex:"ececec")
                                         .frame(width: itemSize, height: itemSize)
-                                    LoadingIndicator(animation: .threeBalls )
+                                    LoadingIndicator(animation: .threeBalls, color:.black)
                                         .opacity(0.3)
                                    // Text("loading...")
                                 }
