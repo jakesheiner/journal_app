@@ -9,8 +9,8 @@ I designed and implemented, which leverages the OpenAI API for text and image ge
 
 To run this project, you will need to supply an openai API key.
 
-1. Open the apikey.xcconfig file at the root of the project
-1. Replace the placeholder text with your api key, making sure to enclose the value with quotes.
+1. Create a file named apikey.xcconfig at the root of the project
+1. In the file add a line 'API_KEY = [your key here]'
 1. Save the file
 1. Build and run the project.
 
