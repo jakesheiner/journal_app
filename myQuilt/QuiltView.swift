@@ -129,7 +129,7 @@ struct QuiltView: View {
                                                   
                                                        LinearGradient(
                                                         stops: [
-                                                            .init(color: .black.opacity(1), location: 0.05),
+                                                            .init(color: .black.opacity(1), location: 0),
                                                             .init(color: .black.opacity(0), location: 0.2),
                                                         ],
                                                            startPoint: .bottom,

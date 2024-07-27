@@ -80,7 +80,7 @@ struct CustomTabView: View {
                             .padding()
                             .background(Circle()
                                 .fill(.white)
-                                .frame(width: 80, height:80)
+                                .frame(width: 70, height:70)
                             )
                             .shadow(radius: 5)
                     }
